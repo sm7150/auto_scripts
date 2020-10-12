@@ -35,8 +35,8 @@ git clone -b $BRANCH_VER https://github.com/sm7150/device_samsung_a70q.git devic
 git clone -b $LINEAGE_OTHER_VER https://github.com/sm7150/a70qkernel.git kernel/samsung/DEVICE_CODE
 
 # Clone for Specific Device Proprietary Blobs | Using wget Commands
-mkdir vendor/samsung
-wget -O vendor/samsung/$VENDOR_VER.tar https://github.com/sm7150/proprietary_vendor_samsung/releases/download/A705FNXXU5BTC2.V2/A705FNXXU5BTC2_UNCOMPRESSED_BLOBS_V2.tar.tar
+# mkdir vendor/samsung
+# wget -O vendor/samsung/$VENDOR_VER.tar https://github.com/sm7150/proprietary_vendor_samsung/releases/download/A705FNXXU5BTC2.V2/A705FNXXU5BTC2_UNCOMPRESSED_BLOBS_V2.tar.tar
 
 # Clone for Specific Device Proprietary Blobs | Using git clone Commads
-# git clone https://github.com/sm7150/proprietary_vendor_samsung.git vendor/samsung/$DEVICE_CODE
+git clone https://github.com/sm7150/proprietary_vendor_samsung.git vendor/samsung/$DEVICE_CODE
