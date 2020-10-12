@@ -10,24 +10,17 @@ echo "Auto-Script Builder for Low-RAM Compile"
 echo "#######################################"
 echo " " " " " "
 
-set -e 
+set -e
 
 echo " " " " "Exporting Some Useful Tools" " "
 # Export Some Java Size Tools & Other things
 export JAVA_TOOL_OPTIONS=-Xmx6g
 export JAVA_TOOL_OPTIONS=-Xmx6g
 
-echo " " " " "Unexporting Some Useless Tools" " "
-# Unexport CCACHE. CCACHE will slow down build & make some errors if dirty building
-unexport USE_CCACHE=1
-unexport USE_CCACHE=1
-unexport CCACHE_EXEC=/usr/bin/ccache
-unexport CCACHE_EXEC=/usr/bin/ccache
-
 # Device Codenames & other settings
 DEVICE_CODE="a70q"
 
-# Do initialize 
+# Do initialize
 . build/envsetup.sh
 
 # Lunch Device
@@ -41,3 +34,6 @@ mka test-api-stubs-docs
 
 # Brunch Device
 brunch lineage_$DEVICE_CODE-userdebug
+
+# CD OUT
+cd $(OUT)
