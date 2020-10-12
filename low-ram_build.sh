@@ -12,6 +12,10 @@ echo " " " " " "
 
 set -e
 
+# Clean Up Output Folder First to Prevent Dirty Build
+rm -rf out
+rm -rf out
+
 echo " " " " "Exporting Some Useful Tools" " "
 # Export Some Java Size Tools & Other things
 export JAVA_TOOL_OPTIONS=-Xmx6g
