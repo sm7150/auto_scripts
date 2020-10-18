@@ -1,5 +1,7 @@
 #!bin/bash
 
+set -e
+
 echo " " " " " "
 echo "#######################################"
 echo "Auto-Builder Script for Lineage Compile"
@@ -8,9 +10,7 @@ echo " Copyright 2020 - firemax13@github.com "
 echo "#######################################"
 echo "Auto-Script Builder for High-RAM Compile"
 echo "#######################################"
-echo " " " " " "
-
-set -e 
+echo " " " " " " 
 
 # Do Clean Build Else Die
 rm -rf out
@@ -18,8 +18,8 @@ rm -rf out
 
 echo " " " " "Exporting Some Useful Tools" " "
 # Export Some Java Size Tools & Other things
-export JAVA_TOOL_OPTIONS=-Xmx8g
-export JAVA_TOOL_OPTIONS=-Xmx8g
+export JAVA_TOOL_OPTIONS=-Xmx6g
+export JAVA_TOOL_OPTIONS=-Xmx6g
 
 # Device Codenames & other settings
 DEVICE_CODE="a70q"
@@ -28,7 +28,7 @@ DEVICE_CODE="a70q"
 . build/envsetup.sh
 
 # Lunch Device
-lunch lineage_$DEVICE_CODE-userdebug
+lunch lineage_$DEVICE_CODE-eng
 
 # ONLY FOR LOW RAM, CHECK THE OTHER SCRIPT FOR LOW RAM COMPILE
 ############################################################################################
@@ -40,4 +40,4 @@ lunch lineage_$DEVICE_CODE-userdebug
 ############################################################################################
 
 # Brunch Device
-brunch lineage_$DEVICE_CODE-userdebug
+brunch lineage_$DEVICE_CODE-eng
