@@ -18,12 +18,13 @@ DEVICE_CODE:"a70q"
 LINEAGE_VERSION="lineage-17.1"
 LINEAGE_OTHER_VER="laos-17.1"
 BRANCH_VER="ten"
-VENDOR_VER="A705FNXXU5BTC2"
+# VENDOR_VER="A705FNXXU5BTC2"
 
 echo "$DEVICE_CODE" "$DEVICE_CODE" "$DEVICE_CODE"
 
 # Clone for Any Dependencies like Custom SLSI and etc
-git clone -b $LINEAGE_VERSION https://github.com/LineageOS/android_hardware_samsung.git hardware/samsung
+# git clone -b $LINEAGE_VERSION https://github.com/LineageOS/android_hardware_samsung.git hardware/samsung
+git clone -b $LINEAGE_VERSION https://github.com/sm7150/android_hardware_samsung.git hardware/samsung
 
 # Clone for Device Tree
 git clone -b $BRANCH_VER https://github.com/sm7150/device_samsung_a70q.git device/samsung/$DEVICE_CODE
@@ -39,4 +40,4 @@ git clone -b $LINEAGE_OTHER_VER https://github.com/sm7150/a70qkernel.git kernel/
 # wget -O vendor/samsung/$VENDOR_VER.tar https://github.com/sm7150/proprietary_vendor_samsung/releases/download/A705FNXXU5BTC2.V2/A705FNXXU5BTC2_UNCOMPRESSED_BLOBS_V2.tar.tar
 
 # Clone for Specific Device Proprietary Blobs | Using git clone Commads
-git clone https://github.com/sm7150/proprietary_vendor_samsung.git vendor/samsung/$DEVICE_CODE
+git clone -b lineage-17.1 https://github.com/Grarak/proprietary_vendor_samsung.git vendor/samsung/$DEVICE_CODE
