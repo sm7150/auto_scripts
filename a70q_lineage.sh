@@ -41,3 +41,12 @@ git clone -b $LINEAGE_OTHER_VER https://github.com/sm7150/a70qkernel.git kernel/
 
 # Clone for Specific Device Proprietary Blobs | Using git clone Commads
 git clone -b lineage-17.1 https://github.com/Grarak/proprietary_vendor_samsung.git vendor/samsung/$DEVICE_CODE
+
+# Curl for auto builder script & set proper permission on it
+curl https://raw.githubusercontent.com/sm7150/auto_scripts/main/high-ram_build.sh > high-ram_build.sh
+la
+ls
+la
+pwd
+chmod a+rx high-ram_build.sh
+echo "Ready to Compile your device!"
