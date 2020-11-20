@@ -1,52 +1,22 @@
-#!bin/bash
-
 set -e
 
-echo " " " " " "
-echo "#########################################"
-echo "# Copyright 2020 — firemax13@github.com #"
-echo "#########################################"
-echo "#  Auto-Script Git Cloning & Fetching   #"
-echo "#########################################"
-echo " " " "
-echo "Lineage Device & Project Tree Auto-Cloner"
-echo "For Device Codename: $DEVICE_CODE"
-echo " " " "
+# Clone All Needed for Building Lineage OS
+git clone https://github.com/sm7150/android_hardware_samsung.git hardware/samsung
+git clone -b test https://github.com/sm7150/device_samsung_a70q.git device/samsung/a70q
+git clone https://github.com/sm7150/a70qkernel.git kernel/samsung/a70q
+git clone https://github.com/sm7150/proprietary_vendor_samsung_a70q.git vendor/samsung/a70q
+git clone https://github.com/LineageOS/android_device_samsung_slsi_sepolicy.git device/samsung_slsi/sepolicy
 
-# Device Specific Branch Name & Version
-DEVICE_CODE:"a70q"
-LINEAGE_VERSION="lineage-17.1"
-LINEAGE_OTHER_VER="laos-17.1"
-BRANCH_VER="ten"
-# VENDOR_VER="A705FNXXU5BTC2"
-
-echo "$DEVICE_CODE" "$DEVICE_CODE" "$DEVICE_CODE"
-
-# Clone for Any Dependencies like Custom SLSI and etc
-# git clone -b $LINEAGE_VERSION https://github.com/LineageOS/android_hardware_samsung.git hardware/samsung
-git clone -b $LINEAGE_VERSION https://github.com/sm7150/android_hardware_samsung.git hardware/samsung
-
-# Clone for Device Tree
-git clone -b $BRANCH_VER https://github.com/sm7150/device_samsung_a70q.git device/samsung/$DEVICE_CODE
-
-# Clone for Common Device Tree if exist
-# git clone https://github.com/firemax13/android_device_samsung_sm7150-common device/samsung/sm7150-common
-
-# Clone for Device Kernel
-git clone -b $LINEAGE_OTHER_VER https://github.com/sm7150/a70qkernel.git kernel/samsung/DEVICE_CODE
-
-# Clone for Specific Device Proprietary Blobs | Using wget Commands
-# mkdir vendor/samsung
-# wget -O vendor/samsung/$VENDOR_VER.tar https://github.com/sm7150/proprietary_vendor_samsung/releases/download/A705FNXXU5BTC2.V2/A705FNXXU5BTC2_UNCOMPRESSED_BLOBS_V2.tar.tar
-
-# Clone for Specific Device Proprietary Blobs | Using git clone Commads
-git clone -b lineage-17.1 https://github.com/Grarak/proprietary_vendor_samsung.git vendor/samsung/$DEVICE_CODE
-
-# Curl for auto builder script & set proper permission on it
-curl https://raw.githubusercontent.com/sm7150/auto_scripts/main/high-ram_build.sh > high-ram_build.sh
-la
+# Apply Some Patches Needed For Any Dependencies
+cd frameworks/base
 ls
-la
-pwd
-chmod a+rx high-ram_build.sh
-echo "Ready to Compile your device!"
+curl https://raw.githubusercontent.com/sm7150/android_frameworks_base/lineage-17.1/0001-Base-MicroG-Patch-Frameworks-for-Signature-Spoofing.patch | git am
+cd ..
+cd ..
+
+# Export Anything You Want (CCACHE, JAVA or Others)
+export JAVA_TOOL_OPTIONS=-Xmx15g
+export JAVA_TOOL_OPTIONS=-Xmx15g
+
+# Build, Lunch & Brunch Starts Here
+. build/envsetup.sh ; lunch lineage_70q-eng ; brunch lineage_a70q-eng
