@@ -9,5 +9,6 @@ jobs:
     steps:
        - name: Testting
          run: |
-              pwd; ls; mkdir cr10; cd cr10
+              git config --list
+              pwd; ls; cd cr10
               repo init -u git://github.com/crdroidandroid/android.git -b 10.0
