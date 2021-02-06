@@ -10,9 +10,8 @@ jobs:
        - name: Dependencies Clone & Fetch
          run: |
               cd cr10
-              git clone -b cr10-r1q https://github.com/sm7150/android_device_samsung_a70q.git device/samsung/r1q
-              git clone https://github.com/sm7150/r1q_camera_derps.git device/samsung/camera/r1q
-
+              rm -rfv hardware/samsung/hidl/fastcharge out
+              
        - name: Build
          run: |
               cd cr10; pwd; ls; export JAVA_TOOL_OPTIONS=-Xmx10g
