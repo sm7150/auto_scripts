@@ -7,8 +7,10 @@ jobs:
     runs-on: ice
 
     steps:
-       - name: crDroidAndroid 6.14 Source Fetch, Sync & Checkout
+       - name: Check crDroidAndroid Sauce
          run: |
+              pwd
               cd cr10
-              repo init -u git://github.com/crdroidandroid/android.git -b 10.0
-              repo sync -j16 --force-sync --no-tags -q
+              ls
+              pwd
+              
