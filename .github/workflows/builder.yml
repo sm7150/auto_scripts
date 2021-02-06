@@ -7,10 +7,10 @@ jobs:
     runs-on: ice
 
     steps:
-       - name: Check crDroidAndroid Sauce
+       - name: Dependencies Clone & Fetch
          run: |
-              pwd
               cd cr10
-              ls
-              pwd
+              git clone -b lineage-17.1 https://github.com/LineageOS/android_hardware_samsung.git hardware/samsung
+              git clone -b lineage-17.1 https://github.com/LineageOS/android_device_samsung_slsi_sepolicy.git device/samsung_slsi/sepolicy
+              git clone -b test https://github.com/sm7150/a80kernel.git kernel/samsung/r1q
               
