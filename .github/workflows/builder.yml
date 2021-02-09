@@ -10,12 +10,10 @@ jobs:
        - name: Dependencies Clone & Fetch
          run: |
               cd cr10
-              rm -rfv out
+              pwd; ls
               
-       - name: Notify Telegram
-         uses: yanzay/notify-telegram@v0.1.0
-         if: always()
+       - name: Notify
+         uses: appleboy/telegram-action@master
          with:
-           chat: ${{ secrets.TEL_CHANNEL }}
+           to: ${{ secrets.TEL_CHANNEL }}
            token: ${{ secrets.TEL_TOKEN }}
-           status: ${{ job.status }}
