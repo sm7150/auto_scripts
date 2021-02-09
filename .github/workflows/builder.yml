@@ -9,7 +9,8 @@ jobs:
     steps:
        - name: Echo Test
          run: |
-              echo "test"
+              ls cr10
+              pwd
               
        - name: Notify
          uses: appleboy/telegram-action@master
@@ -21,4 +22,4 @@ jobs:
        - uses: actions/upload-artifact@v2
          with:
             name: test artifacts
-            path: cr10/device/samsung/r1q/device.mk
+            path: $(pwd)/cr10/device/samsung/r1q/device.mk
