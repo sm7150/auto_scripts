@@ -9,7 +9,7 @@ jobs:
     steps:
        - name: Dependencies Clone & Fetch
          run: |
-              docker
+              sudo apt-get install docker -y
               
        - uses: actions/checkout@master
        - name: Notify
