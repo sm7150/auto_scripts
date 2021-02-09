@@ -10,16 +10,12 @@ jobs:
        - name: Dependencies Clone & Fetch
          run: |
               cd cr10
-              rm -rfv hardware/samsung/hidl/fastcharge out
+              rm -rfv out
               
-       - name: Build
-         run: |
-              cd cr10; pwd; ls; export JAVA_TOOL_OPTIONS=-Xmx10g
-              . build/envsetup.sh
-              lunch lineage_r1q-user
-              brunch lineage_r1q-user
-
-       - name: Release
-         run: |
-              cd cr10/device/samsung/camera/r1q
-              hub release create -a ../../../../out/target/product/r1q/crDroidAndroid-10.0-20210206-r1q-v6.14.zip -m "crDroidAndroid-10.0-20210206-r1q-v6.14.zip" idk-6.14   
+       - name: Notify Telegram
+         uses: yanzay/notify-telegram@v0.1.0
+         if: always()
+         with:
+           chat: ${{ secrets.TEL_CHANNEL }}
+           token: ${{ secrets.TEL_TOKEN }}
+           status: ${{ job.status }}
