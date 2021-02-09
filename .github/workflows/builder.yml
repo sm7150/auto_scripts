@@ -9,11 +9,11 @@ jobs:
     steps:
        - name: Dependencies Clone & Fetch
          run: |
-              sudo apt-get install docker -y
+              echo "test"
               
        - uses: actions/checkout@master
        - name: Notify
          uses: appleboy/telegram-action@master
          with:
-           to: ${{ secrets.TEL_TO }}
+           to: ${{ secrets.TEL_CHANNEL }}
            token: ${{ secrets.TEL_TOKEN }}
