@@ -9,7 +9,7 @@ jobs:
     steps:
        - name: Dependencies Clone & Fetch
          run: |
-              pwd; ls
+              docker
               
        - uses: actions/checkout@master
        - name: Notify
