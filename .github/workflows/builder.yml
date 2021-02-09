@@ -15,5 +15,5 @@ jobs:
        - name: Notify
          uses: appleboy/telegram-action@master
          with:
-           to: ${{ secrets.TEL_CHANNEL }}
+           to: ${{ secrets.TEL_TO }}
            token: ${{ secrets.TEL_TOKEN }}
