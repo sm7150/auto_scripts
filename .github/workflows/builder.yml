@@ -22,4 +22,4 @@ jobs:
        - uses: actions/upload-artifact@v2
          with:
             name: test artifacts
-            path: $(pwd)/cr10/device/samsung/r1q/device.mk
+            path: cr10/android/default.xml
