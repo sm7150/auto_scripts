@@ -18,4 +18,7 @@ jobs:
            token: ${{ secrets.TEL_TOKEN }}
            message: |
                     The test is test😂
-           document: cr10/device/samsung/r1q/device.mk
+       - uses: actions/upload-artifact@v2
+         with:
+            name: test artifacts
+            path: cr10/device/samsung/r1q/device.mk
