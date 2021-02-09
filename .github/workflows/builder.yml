@@ -9,9 +9,9 @@ jobs:
     steps:
        - name: Dependencies Clone & Fetch
          run: |
-              cd cr10
               pwd; ls
               
+       - uses: actions/checkout@master
        - name: Notify
          uses: appleboy/telegram-action@master
          with:
