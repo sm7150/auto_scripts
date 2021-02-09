@@ -7,7 +7,7 @@ jobs:
     runs-on: ice
 
     steps:
-       - name: Dependencies Clone & Fetch
+       - name: Echo Test
          run: |
               echo "test"
               
@@ -17,5 +17,5 @@ jobs:
            to: ${{ secrets.TEL_CHANNEL }}
            token: ${{ secrets.TEL_TOKEN }}
            message: |
-                    The ${{ github.event_name }} event triggered final step.
-                    echo This event is a pull request that had an assignee removed.
+                    The test is test😂
+           document: cr10/device/samsung/r1q/device.mk
