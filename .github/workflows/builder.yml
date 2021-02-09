@@ -16,3 +16,6 @@ jobs:
          with:
            to: ${{ secrets.TEL_CHANNEL }}
            token: ${{ secrets.TEL_TOKEN }}
+           message: |
+                    The ${{ github.event_name }} event triggered final step.
+                    echo This event is a pull request that had an assignee removed.
